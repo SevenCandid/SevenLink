@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seven | Campus Tech & Document Services</title>
+    <style>
+        :root {
+            --primary: #6a11cb;
+            --secondary: #2575fc;
+            --accent: #ff5e62;
+            --tech: #00b894;
+            --campus: #fd79a8;
+            --dark: #2d3436;
+            --light: #f5f6fa;
+            --faq: #f8f9fa;
+            --package: #ff9f43;
+            --ambassador: #6c5ce7;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        /* ===== 5. DEADLINE COUNTDOWN ===== */
+        .deadline-alert {
+            background: var(--accent);
+            color: white;
+            padding: 0.7rem;
+            margin: 0 auto;
+            border-radius: 5px;
+            text-align: center;
+            max-width: 500px;
+            animation: pulse 2s infinite;
+            font-size: clamp(0.9rem, 3vw, 1rem);
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.03); }
+            100% { transform: scale(1); }
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 2.5rem 1rem;
+            text-align: center;
+            clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+            padding-bottom: 4rem;
+            margin-bottom: -2rem;
+        }
+        
+        .logo {
+            font-size: clamp(2.5rem, 8vw, 3.5rem);
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            letter-spacing: 2px;
+        }
+        
+        .tagline {
+            font-size: clamp(1rem, 3.5vw, 1.2rem);
+            opacity: 0.9;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        
+        .badge {
+            padding: 0.4rem 0.8rem;
+            border-radius: 50px;
+            display: inline-block;
+            margin: 0.3rem;
+            font-weight: 600;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            font-size: clamp(0.7rem, 3vw, 0.9rem);
+        }
+        
+        .campus-badge {
+            background: white;
+            color: var(--primary);
+        }
+        
+        .category-badge {
+            background: var(--tech);
+            color: white;
+            margin-top: 1.2rem;
+        }
+        
+        .campus-service-badge {
+            background: var(--campus);
+            color: white;
+            font-size: 0.7rem;
+            padding: 0.3rem 0.8rem;
+            margin-left: 0.5rem;
+            display: inline-block;
+            border-radius: 50px;
+        }
+        
+        /* ===== 3. AMBASSADOR PROGRAM ===== */
+        .ambassador-cta {
+            background: linear-gradient(135deg, var(--ambassador), #a29bfe);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin: 2rem 0;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        /* ===== 2. SERVICE PACKAGES ===== */
+        .packages {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin: 2rem 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .package {
+            background: rgba(255, 159, 67, 0.1);
+            border-left: 4px solid var(--package);
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 0 5px 5px 0;
+        }
+        
+        .package h4 {
+            color: var(--package);
+            margin-bottom: 0.5rem;
+        }
+        
+        .package s {
+            opacity: 0.7;
+        }
+        
+        /* ===== 4. PAYMENT CALCULATOR ===== */
+        .calculator {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin: 2rem 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .calculator h3 {
+            margin-bottom: 1rem;
+        }
+        
+        .calculator input {
+            width: 100%;
+            padding: 0.8rem;
+            margin: 0.5rem 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        
+        .calculator button {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 0.7rem 1.5rem;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 0.5rem 0;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .calculator button:hover {
+            background: var(--secondary);
+        }
+        
+        #calculator-result {
+            font-weight: bold;
+            margin-top: 1rem;
+            color: var(--accent);
+            font-size: 1.1rem;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
+            gap: 1.5rem;
+            margin: 2.5rem 0;
+        }
+        
+        .service-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .document-service {
+            border-top: 5px solid var(--accent);
+        }
+        
+        .coding-service {
+            border-top: 5px solid var(--tech);
+        }
+        
+        .campus-service {
+            border-top: 5px solid var(--campus);
+        }
+        
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+        }
+        
+        .service-icon {
+            font-size: clamp(2rem, 8vw, 2.5rem);
+            margin: 1rem 0;
+        }
+        
+        .document-icon {
+            color: var(--accent);
+        }
+        
+        .coding-icon {
+            color: var(--tech);
+        }
+        
+        .campus-icon {
+            color: var(--campus);
+        }
+        
+        .service-content {
+            padding: 1.5rem;
+            text-align: center;
+        }
+        
+        .price {
+            font-weight: bold;
+            font-size: clamp(1.1rem, 4vw, 1.3rem);
+            margin: 1rem 0;
+        }
+        
+        .document-price {
+            color: var(--accent);
+        }
+        
+        .coding-price {
+            color: var(--tech);
+        }
+        
+        .campus-price {
+            color: var(--campus);
+        }
+        
+        .btn {
+            display: inline-block;
+            color: white;
+            padding: 0.7rem 1.8rem;
+            border-radius: 50px;
+            text-decoration: none;
+            margin-top: 1rem;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            font-size: clamp(0.8rem, 3.5vw, 0.9rem);
+            white-space: nowrap;
+        }
+        
+        .document-btn {
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+        }
+        
+        .coding-btn {
+            background: linear-gradient(to right, var(--tech), #00cec9);
+        }
+        
+        .campus-btn {
+            background: linear-gradient(to right, var(--campus), #e84393);
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        .category-header {
+            text-align: center;
+            margin: 2.5rem 0 1rem;
+            position: relative;
+        }
+        
+        .category-header h2 {
+            display: inline-block;
+            background: white;
+            padding: 0 1.5rem;
+            position: relative;
+            z-index: 2;
+            font-size: clamp(1.5rem, 5vw, 1.8rem);
+        }
+        
+        .category-header::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(to right, transparent, #ddd, transparent);
+            z-index: 1;
+        }
+        
+        /* FAQ Section */
+        .faq-section {
+            background: var(--faq);
+            padding: 2.5rem 1rem;
+            margin: 2.5rem 0;
+            border-radius: 10px;
+        }
+        
+        .faq-item {
+            margin-bottom: 1rem;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+        }
+        
+        .faq-question {
+            background: white;
+            padding: 1.2rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+        
+        .faq-question:hover {
+            background: #f8f9fa;
+        }
+        
+        .faq-question::after {
+            content: "+";
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .faq-question.active::after {
+            content: "-";
+        }
+        
+        .faq-answer {
+            background: white;
+            padding: 0 1.2rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .faq-answer.show {
+            padding: 0 1.2rem 1.2rem;
+            max-height: 500px;
+        }
+        
+        /* ===== 1. LIVE CHAT BUTTON ===== */
+        .live-chat-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #25D366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            z-index: 100;
+            animation: float 3s ease-in-out infinite;
+            text-decoration: none;
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        footer {
+            background: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 2.5rem 1rem;
+            margin-top: 2.5rem;
+        }
+        
+        .institutions {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin: 1rem 0;
+            gap: 0.5rem;
+        }
+        
+        /* Responsive Adjustments */
+        @media (max-width: 600px) {
+            header {
+                padding: 2rem 1rem;
+                padding-bottom: 3.5rem;
+                clip-path: polygon(0 0, 100% 0, 100% 92%, 0 100%);
+            }
+            
+            .service-content {
+                padding: 1.2rem;
+            }
+            
+            .faq-section {
+                padding: 1.5rem;
+            }
+            
+            footer {
+                padding: 2rem 1rem;
+            }
+            
+            .live-chat-btn {
+                width: 50px;
+                height: 50px;
+                bottom: 15px;
+                right: 15px;
+            }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <!-- ===== 5. DEADLINE COUNTDOWN ===== -->
+    <div class="deadline-alert">
+        ⏰ <strong>24-HOUR RUSH SERVICE:</strong> Extra 30% for same-day completion!
+    </div>
+    
+    <header>
+        <div class="container">
+            <div class="logo">SEVEN</div>
+            <p class="tagline">Complete Academic Services for All Tertiary Students</p>
+            <div style="margin-top: 1rem;">
+                <span class="badge campus-badge">Universities</span>
+                <span class="badge campus-badge">Colleges</span>
+                <span class="badge campus-badge">Nursing/Midwifery</span>
+                <span class="badge campus-badge">Education</span>
+                <span class="badge campus-badge">Polytechnics</span>
+            </div>
+        </div>
+    </header>
+    
+    <main class="container">
+        <!-- ===== 3. AMBASSADOR PROGRAM ===== -->
+        <div class="ambassador-cta">
+            <h3><i class="fas fa-star"></i> Earn ₵500+/month as a Seven Ambassador!</h3>
+            <p>Refer students from your campus and earn 15% commission on their orders</p>
+            <a href="https://wa.me/233549437374?text=I%20want%20to%20be%20a%20Seven%20Ambassador" class="btn" style="background: white; color: var(--ambassador); margin-top: 1rem;">Apply Now</a>
+        </div>
+        
+        <!-- ===== 2. SERVICE PACKAGES ===== -->
+        <section class="packages">
+            <h3><i class="fas fa-gift"></i> Student Packages (Save 20-30%)</h3>
+            
+            <div class="package">
+                <h4>Thesis Complete Pack</h4>
+                <p>Word Formatting + Printing + Binding = <s>₵300</s> <strong>₵240</strong></p>
+                <a href="https://wa.me/233549437374?text=I%20want%20the%20Thesis%20Complete%20Pack" class="btn document-btn" style="margin-top: 0.5rem; padding: 0.5rem 1.5rem;">Order Package</a>
+            </div>
+            
+            <div class="package">
+                <h4>Coding Starter Bundle</h4>
+                <p>Python Script + Documentation + Debugging = <s>₵450</s> <strong>₵360</strong></p>
+                <a href="https://wa.me/233549437374?text=I%20want%20the%20Coding%20Starter%20Bundle" class="btn coding-btn" style="margin-top: 0.5rem; padding: 0.5rem 1.5rem;">Order Package</a>
+            </div>
+            
+            <div class="package">
+                <h4>Presentation Pro Pack</h4>
+                <p>PowerPoint + Speaker Notes + Print Slides = <s>₵250</s> <strong>₵200</strong></p>
+                <a href="https://wa.me/233549437374?text=I%20want%20the%20Presentation%20Pro%20Pack" class="btn document-btn" style="margin-top: 0.5rem; padding: 0.5rem 1.5rem;">Order Package</a>
+            </div>
+        </section>
+        
+        <!-- ===== 4. PAYMENT CALCULATOR ===== -->
+        <section class="calculator">
+            <h3><i class="fas fa-calculator"></i> Price Calculator</h3>
+            <p>Estimate your document formatting cost:</p>
+            <input type="number" id="pageCount" placeholder="Enter number of pages" min="1">
+            <button onclick="calculatePrice()">Calculate</button>
+            <div id="calculator-result">Estimated cost: ₵0.00</div>
+            <p style="font-size: 0.8rem; margin-top: 0.5rem; opacity: 0.7;">*Base rate: ₵2 per page</p>
+        </section>
+        
+        <!-- Document Services Section -->
+        <div class="category-header">
+            <h2><i class="fas fa-file-alt" style="color: var(--accent); margin-right: 10px;"></i> Document Services</h2>
+            <span class="badge category-badge">For all students</span>
+        </div>
+        
+        <section class="services-grid">
+            <div class="service-card document-service">
+                <div class="service-content">
+                    <div class="service-icon document-icon"><i class="fas fa-file-word"></i></div>
+                    <h3>MS Word Magic</h3>
+                    <p>Thesis formatting, report writing with perfect TOC, headers, and citations.</p>
+                    <div class="price document-price">₵80 - ₵250</div>
+                    <a href="https://wa.me/233549437374?text=I%20need%20MS%20Word%20help" class="btn document-btn">Order Now</a>
+                </div>
+            </div>
+            
+            <div class="service-card document-service">
+                <div class="service-content">
+                    <div class="service-icon document-icon"><i class="fas fa-file-excel"></i></div>
+                    <h3>Excel Wizardry</h3>
+                    <p>Data analysis, formulas, charts for assignments and research projects.</p>
+                    <div class="price document-price">₵100 - ₵300</div>
+                    <a href="https://wa.me/233549437374?text=I%20need%20Excel%20help" class="btn document-btn">Order Now</a>
+                </div>
+            </div>
+            
+            <div class="service-card document-service">
+                <div class="service-content">
+                    <div class="service-icon document-icon"><i class="fas fa-file-powerpoint"></i></div>
+                    <h3>PowerPoint Pro</h3>
+                    <p>Stunning presentations with animations and professional templates.</p>
+                    <div class="price document-price">₵120 - ₵350</div>
+                    <a href="https://wa.me/233549437374?text=I%20need%20PowerPoint%20help" class="btn document-btn">Order Now</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Coding Services Section -->
+        <div class="category-header">
+            <h2><i class="fas fa-code" style="color: var(--tech); margin-right: 10px;"></i> Coding Services</h2>
+            <span class="badge category-badge">For tech students</span>
+        </div>
+        
+        <section class="services-grid">
+            <div class="service-card coding-service">
+                <div class="service-content">
+                    <div class="service-icon coding-icon"><i class="fab fa-python"></i></div>
+                    <h3>Python Programming</h3>
+                    <p>Scripts for automation, data analysis, and academic projects.</p>
+                    <div class="price coding-price">₵120 - ₵400</div>
+                    <a href="https://wa.me/233549437374?text=I%20need%20Python%20help" class="btn coding-btn">Order Now</a>
+                </div>
+            </div>
+            
+            <div class="service-card coding-service">
+                <div class="service-content">
+                    <div class="service-icon coding-icon"><i class="fab fa-html5"></i></div>
+                    <h3>Web Development</h3>
+                    <p>HTML/CSS/JavaScript websites for projects and small businesses.</p>
+                    <div class="price coding-price">₵250 - ₵800</div>
+                    <a href="https://wa.me/233549437374?text=I%20need%20Web%20Development%20help" class="btn coding-btn">Order Now</a>
+                </div>
+            </div>
+            
+            <div class="service-card coding-service">
+                <div class="service-content">
+                    <div class="service-icon coding-icon"><i class="fas fa-database"></i></div>
+                    <h3>Database Projects</h3>
+                    <p>SQL database design and implementation for school projects.</p>
+                    <div class="price coding-price">₵200 - ₵600</div>
+                    <a href="https://wa.me/233549437374?text=I%20need%20Database%20help" class="btn coding-btn">Order Now</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Campus Services Section (UENR Only) -->
+        <div class="category-header">
+            <h2><i class="fas fa-university" style="color: var(--campus); margin-right: 10px;"></i> UENR Campus Services</h2>
+            <span class="badge category-badge">Exclusive to UENR students</span>
+        </div>
+        
+        <section class="services-grid">
+            <div class="service-card campus-service">
+                <div class="service-content">
+                    <div class="service-icon campus-icon"><i class="fas fa-book"></i></div>
+                    <h3>Thesis Binding
+                        <span class="badge campus-service-badge">UENR Only</span>
+                    </h3>
+                    <p>Professional hardcover binding for projects and theses with same-day service.</p>
+                    <div class="price campus-price">₵15 - ₵50</div>
+                    <a href="https://wa.me/233549437374?text=I%20need%20Thesis%20Binding%20at%20UENR" class="btn campus-btn">Order Now</a>
+                </div>
+            </div>
+            
+            <div class="service-card campus-service">
+                <div class="service-content">
+                    <div class="service-icon campus-icon"><i class="fas fa-motorcycle"></i></div>
+                    <h3>Campus Delivery
+                        <span class="badge campus-service-badge">UENR Only</span>
+                    </h3>
+                    <p>Document pickup and delivery service across UENR campus.</p>
+                    <div class="price campus-price">₵5 - ₵15</div>
+                    <a href="https://wa.me/233549437374?text=I%20need%20Campus%20Delivery%20at%20UENR" class="btn campus-btn">Order Now</a>
+                </div>
+            </div>
+            
+            <div class="service-card campus-service">
+                <div class="service-content">
+                    <div class="service-icon campus-icon"><i class="fas fa-print"></i></div>
+                    <h3>Urgent Printing
+                        <span class="badge campus-service-badge">UENR Only</span>
+                    </h3>
+                    <p>High-quality color/BW printing with 1-hour delivery promise.</p>
+                    <div class="price campus-price">₵2 - ₵10/page</div>
+                    <a href="https://wa.me/233549437374?text=I%20need%20Urgent%20Printing%20at%20UENR" class="btn campus-btn">Order Now</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="faq-section">
+            <h2 style="text-align: center; margin-bottom: 1.5rem; font-size: clamp(1.5rem, 5vw, 1.8rem);">Frequently Asked Questions</h2>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    How quickly can you complete my document formatting?
+                </div>
+                <div class="faq-answer">
+                    <p>Most Word documents (under 50 pages) are completed within 24 hours. For urgent requests (3-6 hour turnaround), we charge a 30% premium fee.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    Can I get my bound thesis delivered same day at UENR?
+                </div>
+                <div class="faq-answer">
+                    <p>Yes! Our UENR binding service offers same-day completion if ordered before 2pm. Delivery to your department adds just ₵5-₵10 depending on location.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    Do you help with coding assignments last-minute?
+                </div>
+                <div class="faq-answer">
+                    <p>We prioritize urgent coding help, but recommend contacting us at least 48 hours before deadline. Last-minute requests (under 12 hours) incur a 50% rush fee.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    How do I pay for services?
+                </div>
+                <div class="faq-answer">
+                    <p>We accept Mobile Money (all networks), cash (UENR only), and bank transfers. Payment is 50% upfront for new clients, balance upon completion.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    Can you do group discounts for classmates?
+                </div>
+                <div class="faq-answer">
+                    <p>Absolutely! Groups of 3+ students get 15% off document services, and 20% off coding projects when ordered together.</p>
+                </div>
+            </div>
+        </section>
+        
+        <section class="testimonials" style="background: white; padding: 2rem 1rem; margin: 2.5rem 0; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.05);">
+            <h2 style="text-align: center; margin-bottom: 1.5rem; font-size: clamp(1.5rem, 5vw, 1.8rem);">What Students Say</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr)); gap: 1.2rem;">
+                <div style="background: var(--light); padding: 1.2rem; border-radius: 8px;">
+                    <p>"Seven saved my nursing project with last-minute PowerPoint help when I was overwhelmed with clinicals!"</p>
+                    <p style="font-weight: 600; margin-top: 1rem;">- Nursing Training College</p>
+                </div>
+                <div style="background: var(--light); padding: 1.2rem; border-radius: 8px;">
+                    <p>"Bound my thesis perfectly at UENR when the campus shop was closed. Lifesaver!"</p>
+                    <p style="font-weight: 600; margin-top: 1rem;">- UENR Engineering</p>
+                </div>
+                <div style="background: var(--light); padding: 1.2rem; border-radius: 8px;">
+                    <p>"Debugged my Java code in 30 minutes after I struggled for days. Worth every cedi!"</p>
+                    <p style="font-weight: 600; margin-top: 1rem;">- UCC Computer Science</p>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <div class="container">
+            <h3 style="font-size: clamp(1.5rem, 5vw, 1.8rem); margin-bottom: 1rem;">Seven Academic Services</h3>
+            <p>Serving students at these institutions:</p>
+            <div class="institutions">
+                <span class="badge campus-badge">UENR</span>
+                <span class="badge campus-badge">KNUST</span>
+                <span class="badge campus-badge">UCC</span>
+                <span class="badge campus-badge">UMAT</span>
+                <span class="badge campus-badge">Nursing</span>
+                <span class="badge campus-badge">Midwifery</span>
+                <span class="badge campus-badge">Education</span>
+                <span class="badge campus-badge">Polytechnics</span>
+                <span class="badge campus-badge">UG</span>
+                <span class="badge campus-badge">UPSA</span>
+                <span class="badge campus-badge">All Tertiary</span>
+            </div>
+            <div style="margin: 1.8rem 0;">
+                <a href="https://wa.me/233549437374" class="btn document-btn" style="margin: 0.5rem;"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+            </div>
+            <p style="margin-top: 1.5rem; opacity: 0.8; font-size: 0.9rem;">© 2025 Seven Student Services. Serving all tertiary students across Ghana.</p>
+            <p style="font-size: 0.75rem; margin-top: 0.5rem; opacity: 0.6;">*Campus services currently available at UENR only</p>
+        </div>
+    </footer>
+
+    <!-- ===== 1. LIVE CHAT BUTTON ===== -->
+    <a href="https://wa.me/233XXXXXXXXX" class="live-chat-btn">
+        <i class="fab fa-whatsapp" style="font-size: 1.8rem;"></i>
+    </a>
+
+    <script>
+        // ===== 4. PAYMENT CALCULATOR FUNCTION =====
+        function calculatePrice() {
+            const pages = document.getElementById('pageCount').value;
+            if (pages > 0) {
+                const price = pages * 2; // ₵2 per page example
+                document.getElementById('calculator-result').innerHTML = `Estimated cost: ₵${price.toFixed(2)}`;
+            } else {
+                alert("Please enter a valid page number");
+            }
+        }
+        
+        // FAQ Toggle Functionality
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const answer = question.nextElementSibling;
+                question.classList.toggle('active');
+                answer.classList.toggle('show');
+                
+                // Close other open FAQs
+                document.querySelectorAll('.faq-question').forEach(q => {
+                    if (q !== question && q.classList.contains('active')) {
+                        q.classList.remove('active');
+                        q.nextElementSibling.classList.remove('show');
+                    }
+                });
+            });
+        });
+        
+        // Smooth scroll for mobile address bar issue
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                window.scrollTo(0, 0);
+            }, 100);
+        });
+    </script>
+</body>
+</html>
