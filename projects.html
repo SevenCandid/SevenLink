@@ -1,0 +1,1371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects | SevenLink - Smart Tech Solutions</title>
+    <meta name="description" content="Explore SevenLink's innovative technology projects including web applications, mobile apps, AI solutions, and smart home automation systems.">
+    <meta name="keywords" content="SevenLink, projects, portfolio, web development, mobile apps, AI, smart home, technology">
+    <meta name="author" content="SevenLink">
+    <meta name="robots" content="index, follow">
+    
+    <!-- OpenGraph Meta Tags -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Projects | SevenLink - Smart Tech Solutions">
+    <meta property="og:description" content="Explore SevenLink's innovative technology projects including web applications, mobile apps, AI solutions, and smart home automation systems.">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1200">
+    <meta property="og:url" content="" id="og-url-projects">
+    <meta property="og:site_name" content="SevenLink">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Projects | SevenLink - Smart Tech Solutions">
+    <meta name="twitter:description" content="Explore SevenLink's innovative technology projects including web applications, mobile apps, AI solutions, and smart home automation systems.">
+    <meta name="twitter:image" content="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1200">
+    
+    <!-- Additional SEO -->
+    <link rel="canonical" href="" id="canonical-projects">
+    
+    <!-- Structured Data for SEO -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "CollectionPage",
+        "name": "SevenLink Projects",
+        "description": "Explore SevenLink's innovative technology projects including web applications, mobile apps, AI solutions, and smart home automation systems.",
+        "url": "",
+        "publisher": {
+            "@type": "Organization",
+            "name": "SevenLink",
+            "logo": {
+                "@type": "ImageObject",
+                "url": ""
+            }
+        }
+    }
+    </script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" type="image/x-icon" href="favicon.png">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* ===== CSS VARIABLES FOR THEMING ===== */
+        :root {
+            --primary-color: #2563eb;
+            --accent-color: #10b981;
+            --bg-light: #ffffff;
+            --bg-secondary-light: #f8fafc;
+            --text-light: #1e293b;
+            --text-secondary-light: #64748b;
+            --border-light: #e2e8f0;
+            
+            /* Dark theme colors */
+            --bg-dark: #0f172a;
+            --bg-secondary-dark: #1e293b;
+            --text-dark: #f1f5f9;
+            --text-secondary-dark: #94a3b8;
+            --border-dark: #334155;
+            
+            /* Active colors */
+            --bg-color: var(--bg-light);
+            --bg-secondary: var(--bg-secondary-light);
+            --text-color: var(--text-light);
+            --text-secondary: var(--text-secondary-light);
+            --border-color: var(--border-light);
+            
+            /* Typography */
+            --font-heading: 'Space Grotesk', sans-serif;
+            --font-body: 'Inter', sans-serif;
+            
+            /* Shadows */
+            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+        }
+        
+        /* Dark mode active styles */
+        [data-theme="dark"] {
+            --bg-color: var(--bg-dark);
+            --bg-secondary: var(--bg-secondary-dark);
+            --text-color: var(--text-dark);
+            --text-secondary: var(--text-secondary-dark);
+            --border-color: var(--border-dark);
+        }
+        
+        /* ===== GLOBAL STYLES ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: var(--font-body);
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            overflow-x: hidden;
+        }
+        
+        /* ===== IMPROVED NAVIGATION HEADER - PERFECT CENTER LOGO ===== */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(50px);
+            border-bottom: 1px solid var(--border-color);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+        
+        [data-theme="dark"] .header {
+            background: rgba(15, 23, 42, 0.95);
+        }
+        
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+            min-height: 70px;
+        }
+        
+        /* Left section - Navigation Links */
+        .nav-left {
+            display: flex;
+            align-items: center;
+            flex: 1;
+            justify-content: flex-start;
+            max-width: 45%;
+            padding-right: 2rem;
+        }
+        
+        /* Center section - Logo (Absolutely centered) */
+        .nav-center {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 10;
+            padding: 0 3rem;
+        }
+        
+        /* Right section - Theme Toggle */
+        .nav-right {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            flex: 1;
+            max-width: 45%;
+            padding-left: 2rem;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+        
+        .logo img {
+            height: 55px;
+            width: auto;
+            transition: all 0.3s ease;
+        }
+        
+        .logo:hover img {
+            transform: scale(1.05);
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 0.5rem;
+            margin: 0;
+            padding: 0;
+            flex-wrap: nowrap;
+            white-space: nowrap;
+            overflow: visible;
+        }
+        
+        .nav-links li {
+            flex-shrink: 0;
+        }
+        
+        .nav-links a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+            position: relative;
+            padding: 0.6rem 1rem;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            flex-shrink: 0;
+        }
+        
+        .nav-links a::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary-color);
+            background: var(--primary-color)10;
+            transform: translateY(-1px);
+        }
+        
+        .nav-links a:hover::before {
+            width: 100%;
+        }
+        
+        .nav-links a.active {
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            color: white;
+            box-shadow: var(--shadow-md);
+        }
+        
+        .nav-links a.active::before {
+            display: none;
+        }
+        
+        /* Mobile menu toggle */
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-color);
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0.5rem;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+        
+        .mobile-menu-toggle:hover {
+            background: var(--bg-secondary);
+            transform: scale(1.1);
+        }
+        
+        .mobile-nav {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: var(--bg-color);
+            border-top: 1px solid var(--border-color);
+            box-shadow: var(--shadow-lg);
+            z-index: 999;
+            backdrop-filter: blur(20px);
+        }
+        
+        .mobile-nav.active {
+            display: block;
+            animation: slideDown 0.3s ease-out;
+        }
+        
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .mobile-nav ul {
+            list-style: none;
+            padding: 1rem 0;
+            margin: 0;
+        }
+        
+        .mobile-nav li {
+            padding: 0.2rem 2rem;
+        }
+        
+        .mobile-nav a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: 500;
+            display: block;
+            padding: 0.8rem 0;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+        
+        .mobile-nav a:hover {
+            color: var(--primary-color);
+            background: var(--primary-color)10;
+            padding-left: 1rem;
+        }
+        
+        .theme-toggle {
+            background: none;
+            border: 2px solid var(--border-color);
+            border-radius: 50px;
+            padding: 0.6rem 1.2rem;
+            cursor: pointer;
+            color: var(--text-color);
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 500;
+        }
+        
+        .theme-toggle:hover {
+            border-color: var(--primary-color);
+            background: var(--primary-color)10;
+            transform: scale(1.05);
+        }
+        
+        /* ===== HERO SECTION - IMPROVED RESPONSIVENESS ===== */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(
+                rgba(15, 23, 42, 0.7), 
+                rgba(15, 23, 42, 0.5)
+            );
+            color: white;
+        }
+        
+        /* Background image with better responsive handling */
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-4.0.3&auto=format&fit=crop&w=2072&q=80');
+            background-size: cover;
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-attachment: scroll;
+            z-index: -2;
+        }
+        
+        /* Animated overlay */
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                radial-gradient(circle at 25% 25%, rgba(37, 99, 235, 0.2) 0%, transparent 50%),
+                radial-gradient(circle at 75% 75%, rgba(16, 185, 129, 0.2) 0%, transparent 50%);
+            animation: float 20s ease-in-out infinite;
+            z-index: -1;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            33% { transform: translateY(-20px) rotate(1deg); }
+            66% { transform: translateY(10px) rotate(-1deg); }
+        }
+        
+        .hero-content {
+            text-align: center;
+            max-width: 900px;
+            padding: 2rem;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .hero h1 {
+            font-family: var(--font-heading);
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #ffffff, #f1f5f9);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            line-height: 1.2;
+        }
+        
+        .hero-subtitle {
+            font-size: clamp(1.2rem, 4vw, 1.8rem);
+            margin-bottom: 2rem;
+            color: #f8fafc;
+            font-weight: 400;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+            line-height: 1.4;
+        }
+        
+        .scroll-indicator {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 2;
+        }
+        
+        .scroll-btn {
+            background: rgba(255, 255, 255, 0.15);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50px;
+            padding: 1rem;
+            cursor: pointer;
+            color: white;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            animation: bounce 2s infinite;
+        }
+        
+        .scroll-btn:hover {
+            background: rgba(255, 255, 255, 0.25);
+            transform: translateY(-3px);
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
+        }
+        
+        /* ===== SCROLL REVEAL ANIMATION - IMPROVED ===== */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* ===== FOOTER - IMPROVED VISIBILITY ===== */
+        .footer {
+            background: var(--bg-color);
+            border-top: 1px solid var(--border-color);
+            padding: 3rem 2rem 2rem;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .footer-logo {
+            margin-bottom: 2rem;
+        }
+        
+        .footer-logo img {
+            height: 50px;
+            width: auto;
+        }
+        
+        .footer-socials {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .footer-social {
+            color: var(--text-secondary);
+            font-size: 1.5rem;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            text-decoration: none;
+            width: 45px;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+        }
+        
+        .footer-social:hover {
+            color: white;
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            transform: translateY(-4px) scale(1.1);
+            border-color: transparent;
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+        }
+        
+        .footer-text {
+            color: var(--text-color);
+            margin-bottom: 1rem;
+            font-weight: 500;
+            font-size: 1rem;
+        }
+        
+        .footer-contact {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+        
+        /* ===== BACK TO TOP BUTTON ===== */
+        .back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            color: white;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            font-size: 1.2rem;
+            cursor: pointer;
+            opacity: 0;
+            transform: translateY(100px);
+            transition: all 0.3s ease;
+            z-index: 999;
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .back-to-top.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .back-to-top:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(37, 99, 235, 0.4);
+        }
+        
+        /* ===== RESPONSIVE DESIGN ===== */
+        @media (max-width: 1200px) {
+            .nav-container {
+                padding: 1rem 1.5rem;
+            }
+            
+            .nav-left {
+                max-width: 42%;
+                padding-right: 1.5rem;
+            }
+            
+            .nav-right {
+                max-width: 42%;
+                padding-left: 1.5rem;
+            }
+            
+            .nav-center {
+                padding: 0 2rem;
+            }
+            
+            .nav-links {
+                gap: 0.4rem;
+            }
+            
+            .nav-links a {
+                padding: 0.5rem 1rem;
+                font-size: 0.9rem;
+            }
+        }
+        
+        @media (max-width: 1024px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .mobile-menu-toggle {
+                display: block;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-container {
+                padding: 1rem;
+            }
+            
+            .logo img {
+                height: 45px;
+            }
+            
+            .theme-toggle span {
+                display: none;
+            }
+            
+            .hero {
+                min-height: 80vh;
+            }
+            
+            .back-to-top {
+                bottom: 1.5rem;
+                right: 1.5rem;
+                width: 45px;
+                height: 45px;
+                font-size: 1rem;
+            }
+        }
+        
+        /* ===== PROJECTS PAGE SPECIFIC STYLES ===== */
+        .projects-section {
+            padding: 5rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .projects-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .projects-header h2 {
+            font-family: var(--font-heading);
+            font-size: clamp(2.5rem, 6vw, 3.5rem);
+            color: var(--text-color);
+            margin-bottom: 1rem;
+            font-weight: 700;
+            position: relative;
+            padding-bottom: 1.5rem;
+        }
+
+        .projects-header h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            border-radius: 2px;
+        }
+
+        .projects-header p {
+            font-size: clamp(1rem, 2.5vw, 1.2rem);
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .projects-search {
+            max-width: 600px;
+            margin: 2rem auto 0;
+            position: relative;
+        }
+
+        .projects-search i {
+            position: absolute;
+            left: 1.5rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-secondary);
+            z-index: 2;
+        }
+
+        .projects-search input {
+            width: 100%;
+            padding: 1rem 1.5rem 1rem 3.5rem;
+            border: 2px solid var(--border-color);
+            border-radius: 50px;
+            background: var(--bg-color);
+            color: var(--text-color);
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .projects-search input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px var(--primary-color)20;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+
+        .project-card {
+            background: var(--bg-color);
+            border: 1px solid var(--border-color);
+            border-radius: 24px;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            position: relative;
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .project-card:hover {
+            transform: translateY(-12px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(37, 99, 235, 0.15), 0 8px 16px rgba(0, 0, 0, 0.1);
+            border-color: var(--primary-color);
+        }
+
+        .project-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .project-card-image {
+            position: relative;
+            width: 100%;
+            height: 250px;
+            overflow: hidden;
+            background: var(--bg-secondary);
+            border-radius: 24px 24px 0 0;
+        }
+
+        .project-card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .project-card:hover .project-card-image img {
+            transform: scale(1.15);
+        }
+
+        .project-card-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.9), rgba(16, 185, 129, 0.9));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .project-card:hover .project-card-overlay {
+            opacity: 1;
+        }
+
+        .project-view-btn {
+            background: white;
+            color: var(--primary-color);
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .project-view-btn:hover {
+            transform: scale(1.05);
+            box-shadow: var(--shadow-md);
+        }
+
+        .project-card-content {
+            padding: 2rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            transition: all 0.3s ease;
+        }
+
+        .project-card:hover .project-card-content {
+            padding-bottom: 2.5rem;
+        }
+
+        .project-card-title {
+            font-family: var(--font-heading);
+            font-size: clamp(1.3rem, 3vw, 1.6rem);
+            color: var(--text-color);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .project-card-description {
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+            font-size: 0.95rem;
+        }
+
+        .project-card-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .tech-tag {
+            background: var(--bg-secondary);
+            color: var(--text-color);
+            padding: 0.5rem 1rem;
+            border-radius: 12px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+        }
+
+        .tech-tag:hover {
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            color: white;
+            border-color: transparent;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(37, 99, 235, 0.2);
+        }
+
+        .tech-tag-more {
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            color: white;
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        .project-card-footer {
+            margin-top: auto;
+        }
+
+        .project-card-link {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            padding: 0.5rem 0;
+        }
+
+        .project-card-link:hover {
+            gap: 0.8rem;
+            color: var(--accent-color);
+            transform: translateX(4px);
+        }
+
+        /* Coming Soon Styles */
+        .project-card.coming-soon {
+            opacity: 0.6;
+            position: relative;
+            pointer-events: none;
+        }
+
+        .project-card.coming-soon .project-card-link,
+        .project-card.coming-soon .project-view-btn {
+            pointer-events: none;
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .coming-soon-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            z-index: 10;
+            box-shadow: var(--shadow-md);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .coming-soon-badge i {
+            font-size: 0.9rem;
+        }
+
+        .no-projects {
+            text-align: center;
+            padding: 4rem 2rem;
+            color: var(--text-secondary);
+        }
+
+        .no-projects i {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            opacity: 0.5;
+        }
+
+        .results-count {
+            text-align: center;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            font-size: 0.95rem;
+        }
+
+        /* Enhanced Shadows and Borders */
+        .projects-section {
+            background: var(--bg-color);
+            border-radius: 0;
+        }
+
+        .project-card {
+            backdrop-filter: blur(10px);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .projects-grid {
+                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+                gap: 2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .projects-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .projects-section {
+                padding: 3rem 1.5rem;
+            }
+
+            .project-card-image {
+                height: 220px;
+            }
+
+            .project-card {
+                border-radius: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .projects-section {
+                padding: 2.5rem 1rem;
+            }
+
+            .project-card-content {
+                padding: 1.5rem;
+            }
+
+            .project-card-image {
+                height: 200px;
+            }
+
+            .projects-header h2 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- ===== NAVIGATION HEADER ===== -->
+    <header class="header">
+        <nav class="nav-container">
+            <div class="nav-left">
+                <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle mobile menu">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <ul class="nav-links">
+                    <li><a href="index.html#home">Home</a></li>
+                    <li><a href="index.html#about">About</a></li>
+                    <li><a href="index.html#core-values">Values</a></li>
+                    <li><a href="index.html#services">Services</a></li>
+                    <li><a href="projects.html" class="active">Projects</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="nav-center">
+                <a href="index.html" class="logo" aria-label="SevenLink Home">
+                    <img src="img/logo.Seven7.png" alt="SevenLink Logo">
+                </a>
+            </div>
+            <div class="nav-right">
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+                    <i class="fas fa-moon"></i>
+                    <span>Dark</span>
+                </button>
+            </div>
+        </nav>
+        <!-- Mobile Navigation Menu -->
+        <div class="mobile-nav" id="mobileNav">
+            <ul>
+                <li><a href="index.html#home">Home</a></li>
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="index.html#core-values">Values</a></li>
+                <li><a href="index.html#services">Services</a></li>
+                <li><a href="projects.html" class="active">Projects</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- ===== HERO SECTION ===== -->
+    <section class="hero" id="projects-hero">
+        <div class="hero-content">
+            <h1>Our Projects</h1>
+            <p class="hero-subtitle">
+                Explore our innovative solutions and cutting-edge technology projects
+            </p>
+        </div>
+        <div class="scroll-indicator">
+            <button class="scroll-btn" onclick="document.getElementById('projects-section').scrollIntoView({behavior: 'smooth'})" aria-label="Scroll to projects">
+                <i class="fas fa-chevron-down"></i>
+            </button>
+        </div>
+    </section>
+
+    <!-- ===== PROJECTS SECTION ===== -->
+    <section class="projects-section reveal" id="projects-section">
+        <div class="projects-header">
+            <h2>Portfolio</h2>
+            <p>Discover our latest projects and innovative solutions</p>
+            <div class="projects-search">
+                <i class="fas fa-search"></i>
+                <input type="text" id="project-search" placeholder="Search projects by name, description, or technology...">
+            </div>
+        </div>
+
+        <div id="results-count" class="results-count"></div>
+        <div class="projects-grid" id="projects-container">
+            <!-- Projects will be loaded here by JavaScript -->
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-logo reveal">
+                <img src="img/logo.Seven7.png" alt="SevenLink Logo">
+            </div>
+            <div class="footer-socials reveal">
+                <a href="#" class="footer-social" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                <a href="#" class="footer-social" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+                <a href="#" class="footer-social" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="footer-social" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            </div>
+            <div class="footer-text reveal">
+                <p>&copy; 2025 SevenLink. All rights reserved.</p>
+            </div>
+            <div class="footer-contact reveal">
+                <p>Contact us: sevennlink@gmail.com | (+233) 54-943-7374</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ===== BACK TO TOP BUTTON ===== -->
+    <button class="back-to-top" id="backToTop" title="Back to top" aria-label="Back to top">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <!-- Scripts -->
+    <script src="js/projects.js"></script>
+    <script>
+        // Render projects function
+        function renderProjects(projectsData) {
+            const container = document.getElementById('projects-container');
+            const resultsCount = document.getElementById('results-count');
+            
+            if (!container) {
+                console.error('Projects container not found');
+                return;
+            }
+
+            // Clear container
+            container.innerHTML = '';
+
+            if (!projectsData || projectsData.length === 0) {
+                container.innerHTML = `
+                    <div class="no-projects" style="grid-column: 1 / -1;">
+                        <i class="fas fa-folder-open"></i>
+                        <p>No projects available at the moment.</p>
+                    </div>
+                `;
+                if (resultsCount) resultsCount.textContent = '0 projects available';
+                return;
+            }
+
+            // Sort projects by id (newest first)
+            const sortedProjects = [...projectsData].sort((a, b) => (b.id || 0) - (a.id || 0));
+
+            // Update results count
+            if (resultsCount) {
+                resultsCount.textContent = `${sortedProjects.length} project${sortedProjects.length !== 1 ? 's' : ''} available`;
+            }
+
+            // Create project cards
+            sortedProjects.forEach((project, index) => {
+                const card = document.createElement('div');
+                const isComingSoon = project.comingSoon === true;
+                card.className = `project-card reveal${isComingSoon ? ' coming-soon' : ''}`;
+                card.style.animationDelay = `${index * 0.1}s`;
+                
+                const imageUrl = project.images && project.images.length > 0 
+                    ? project.images[0] 
+                    : 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800';
+
+                const viewButton = isComingSoon 
+                    ? `<span class="project-view-btn" style="cursor: not-allowed; opacity: 0.5;">
+                            <i class="fas fa-lock"></i> Coming Soon
+                        </span>`
+                    : `<a href="project.html?slug=${project.slug}" class="project-view-btn">
+                            <i class="fas fa-eye"></i> View Project
+                        </a>`;
+
+                const learnMoreLink = isComingSoon
+                    ? `<span class="project-card-link" style="cursor: not-allowed; opacity: 0.5;">
+                            Coming Soon <i class="fas fa-lock"></i>
+                        </span>`
+                    : `<a href="project.html?slug=${project.slug}" class="project-card-link">
+                            Learn More <i class="fas fa-arrow-right"></i>
+                        </a>`;
+
+                card.innerHTML = `
+                    ${isComingSoon ? '<div class="coming-soon-badge"><i class="fas fa-clock"></i> Coming Soon</div>' : ''}
+                    <div class="project-card-image">
+                        <img src="${imageUrl}" alt="${project.title}" loading="lazy">
+                        <div class="project-card-overlay">
+                            ${viewButton}
+                        </div>
+                    </div>
+                    <div class="project-card-content">
+                        <h3 class="project-card-title">${project.title}</h3>
+                        <p class="project-card-description">${project.shortDescription}</p>
+                        <div class="project-card-tech">
+                            ${project.techStack.slice(0, 3).map(tech => 
+                                `<span class="tech-tag">${tech}</span>`
+                            ).join('')}
+                            ${project.techStack.length > 3 ? `<span class="tech-tag-more">+${project.techStack.length - 3}</span>` : ''}
+                        </div>
+                        <div class="project-card-footer">
+                            ${learnMoreLink}
+                        </div>
+                    </div>
+                `;
+
+                // Prevent navigation for coming soon projects
+                if (isComingSoon) {
+                    card.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
+                    });
+                }
+
+                container.appendChild(card);
+            });
+
+            // Initialize scroll reveal
+            const revealElements = document.querySelectorAll('.reveal');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.1 });
+            revealElements.forEach(el => observer.observe(el));
+        }
+
+        // Search functionality
+        function filterProjects(searchTerm) {
+            const projectsData = window.getAllProjects ? window.getAllProjects() : window.projects;
+            if (!projectsData) return;
+
+            const filtered = projectsData.filter(project => {
+                const term = searchTerm.toLowerCase();
+                return project.title.toLowerCase().includes(term) ||
+                       project.shortDescription.toLowerCase().includes(term) ||
+                       project.techStack.some(tech => tech.toLowerCase().includes(term));
+            });
+
+            renderProjects(filtered);
+            
+            const resultsCount = document.getElementById('results-count');
+            if (resultsCount) {
+                if (searchTerm) {
+                    resultsCount.textContent = `${filtered.length} project${filtered.length !== 1 ? 's' : ''} found`;
+                } else {
+                    resultsCount.textContent = `${filtered.length} project${filtered.length !== 1 ? 's' : ''} available`;
+                }
+            }
+        }
+
+        // Initialize page
+        function initProjectsPage() {
+            // Wait for projects data
+            function checkAndRender() {
+                if (window.projects && Array.isArray(window.projects)) {
+                    // Use getAllProjects() to get sorted projects (newest first)
+                    const sortedProjects = window.getAllProjects ? window.getAllProjects() : window.projects;
+                    renderProjects(sortedProjects);
+                    
+                    // Setup search
+                    const searchInput = document.getElementById('project-search');
+                    if (searchInput) {
+                        searchInput.addEventListener('input', (e) => {
+                            filterProjects(e.target.value);
+                        });
+                    }
+                } else {
+                    setTimeout(checkAndRender, 100);
+                }
+            }
+
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', checkAndRender);
+            } else {
+                checkAndRender();
+            }
+        }
+
+        // Start initialization
+        initProjectsPage();
+        
+        // Update OpenGraph URL and canonical link
+        if (typeof window !== 'undefined' && window.location) {
+            const currentUrl = window.location.href;
+            const ogUrl = document.getElementById('og-url-projects');
+            const canonical = document.getElementById('canonical-projects');
+            if (ogUrl) ogUrl.setAttribute('content', currentUrl);
+            if (canonical) canonical.setAttribute('href', currentUrl);
+        }
+    </script>
+    <script src="js/projects-list.js"></script>
+    <script>
+        // Theme toggle and mobile menu functionality
+        class ThemeToggle {
+            constructor() {
+                this.themeToggle = document.getElementById('themeToggle');
+                this.currentTheme = localStorage.getItem('theme') || 'light';
+                this.init();
+            }
+            
+            init() {
+                this.setTheme(this.currentTheme);
+                this.themeToggle.addEventListener('click', () => this.toggleTheme());
+            }
+            
+            setTheme(theme) {
+                document.documentElement.setAttribute('data-theme', theme);
+                const icon = this.themeToggle.querySelector('i');
+                const text = this.themeToggle.querySelector('span');
+                
+                if (theme === 'dark') {
+                    icon.className = 'fas fa-sun';
+                    if (text) text.textContent = 'Light';
+                } else {
+                    icon.className = 'fas fa-moon';
+                    if (text) text.textContent = 'Dark';
+                }
+                
+                localStorage.setItem('theme', theme);
+                this.currentTheme = theme;
+            }
+            
+            toggleTheme() {
+                const newTheme = this.currentTheme === 'light' ? 'dark' : 'light';
+                this.setTheme(newTheme);
+            }
+        }
+
+        class MobileMenu {
+            constructor() {
+                this.toggle = document.getElementById('mobileMenuToggle');
+                this.menu = document.getElementById('mobileNav');
+                this.init();
+            }
+            
+            init() {
+                this.toggle.addEventListener('click', () => this.toggleMenu());
+                this.menu.querySelectorAll('a').forEach(link => {
+                    link.addEventListener('click', () => this.closeMenu());
+                });
+            }
+            
+            toggleMenu() {
+                this.menu.classList.toggle('active');
+                const icon = this.toggle.querySelector('i');
+                if (this.menu.classList.contains('active')) {
+                    icon.className = 'fas fa-times';
+                } else {
+                    icon.className = 'fas fa-bars';
+                }
+            }
+            
+            closeMenu() {
+                this.menu.classList.remove('active');
+                this.toggle.querySelector('i').className = 'fas fa-bars';
+            }
+        }
+
+        class BackToTop {
+            constructor() {
+                this.button = document.getElementById('backToTop');
+                this.init();
+            }
+            
+            init() {
+                window.addEventListener('scroll', () => this.toggleVisibility());
+                this.button.addEventListener('click', () => this.scrollToTop());
+            }
+            
+            toggleVisibility() {
+                if (window.scrollY > 300) {
+                    this.button.classList.add('visible');
+                } else {
+                    this.button.classList.remove('visible');
+                }
+            }
+            
+            scrollToTop() {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        }
+
+        // Initialize components
+        document.addEventListener('DOMContentLoaded', () => {
+            new ThemeToggle();
+            new MobileMenu();
+            new BackToTop();
+        });
+    </script>
+</body>
+</html>
+

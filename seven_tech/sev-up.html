@@ -1,0 +1,1376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SevenLink | Campus Tech & Document Services - Ghana's #1 Student Service</title>
+    <meta name="description" content="Professional document formatting, coding help, and campus services for Ghanaian tertiary students. 24-hour service, expert quality, affordable prices.">
+    <meta name="theme-color" content="#2563eb">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" type="image/x-icon" href="../favicon.png">
+    <!-- Load the original CSS for page content FIRST, then override with inline styles -->
+    <link rel="stylesheet" href="sen-up.css">
+    <style>
+        /* ===== CSS VARIABLES FOR THEMING ===== */
+        :root {
+            --primary-color: #2563eb;
+            --accent-color: #10b981;
+            --bg-light: #ffffff;
+            --bg-secondary-light: #f8fafc;
+            --text-light: #1e293b;
+            --text-secondary-light: #64748b;
+            --border-light: #e2e8f0;
+            
+            /* Dark theme colors */
+            --bg-dark: #0f172a;
+            --bg-secondary-dark: #1e293b;
+            --text-dark: #f1f5f9;
+            --text-secondary-dark: #94a3b8;
+            --border-dark: #334155;
+            
+            /* Active colors */
+            --bg-color: var(--bg-light);
+            --bg-secondary: var(--bg-secondary-light);
+            --text-color: var(--text-light);
+            --text-secondary: var(--text-secondary-light);
+            --border-color: var(--border-light);
+            
+            /* Typography */
+            --font-heading: 'Space Grotesk', sans-serif;
+            --font-body: 'Inter', sans-serif;
+            
+            /* Shadows */
+            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+        }
+        
+        /* Dark mode active styles */
+        [data-theme="dark"] {
+            --bg-color: var(--bg-dark);
+            --bg-secondary: var(--bg-secondary-dark);
+            --text-color: var(--text-dark);
+            --text-secondary: var(--text-secondary-dark);
+            --border-color: var(--border-dark);
+        }
+        
+        /* ===== GLOBAL STYLES ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: var(--font-body);
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            overflow-x: hidden;
+        }
+        
+        /* ===== IMPROVED NAVIGATION HEADER - PERFECT CENTER LOGO ===== */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(50px);
+            border-bottom: 1px solid var(--border-color);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+        
+        [data-theme="dark"] .header {
+            background: rgba(15, 23, 42, 0.95);
+        }
+        
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+            min-height: 70px;
+        }
+        
+        /* Left section - Navigation Links */
+        .nav-left {
+            display: flex;
+            align-items: center;
+            flex: 1;
+            justify-content: flex-start;
+            max-width: 45%;
+            padding-right: 2rem;
+        }
+        
+        /* Center section - Logo (Absolutely centered) */
+        .nav-center {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 10;
+            padding: 0 3rem;
+        }
+        
+        /* Right section - Theme Toggle */
+        .nav-right {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            flex: 1;
+            max-width: 45%;
+            padding-left: 2rem;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+        
+        .logo img {
+            height: 55px;
+            width: auto;
+            transition: all 0.3s ease;
+        }
+        
+        .logo:hover img {
+            transform: scale(1.05);
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 0.5rem;
+            margin: 0;
+            padding: 0;
+            flex-wrap: nowrap;
+            white-space: nowrap;
+            overflow: visible;
+        }
+        
+        .nav-links li {
+            flex-shrink: 0;
+        }
+        
+        .nav-links a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+            position: relative;
+            padding: 0.6rem 1rem;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            flex-shrink: 0;
+        }
+        
+        .nav-links a::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary-color);
+            background: var(--primary-color)10;
+            transform: translateY(-1px);
+        }
+        
+        .nav-links a:hover::before {
+            width: 100%;
+        }
+        
+        .nav-links a.active {
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            color: white;
+            box-shadow: var(--shadow-md);
+        }
+        
+        .nav-links a.active::before {
+            display: none;
+        }
+        
+        /* Mobile menu toggle */
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-color);
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0.5rem;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+        
+        .mobile-menu-toggle:hover {
+            background: var(--bg-secondary);
+            transform: scale(1.1);
+        }
+        
+        .mobile-nav {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: var(--bg-color);
+            border-top: 1px solid var(--border-color);
+            box-shadow: var(--shadow-lg);
+            z-index: 999;
+            backdrop-filter: blur(20px);
+        }
+        
+        .mobile-nav.active {
+            display: block;
+            animation: slideDown 0.3s ease-out;
+        }
+        
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .mobile-nav ul {
+            list-style: none;
+            padding: 1rem 0;
+            margin: 0;
+        }
+        
+        .mobile-nav li {
+            padding: 0.2rem 2rem;
+        }
+        
+        .mobile-nav a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: 500;
+            display: block;
+            padding: 0.8rem 0;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+        
+        .mobile-nav a:hover {
+            color: var(--primary-color);
+            background: var(--primary-color)10;
+            padding-left: 1rem;
+        }
+        
+        .theme-toggle {
+            background: none;
+            border: 2px solid var(--border-color);
+            border-radius: 50px;
+            padding: 0.6rem 1.2rem;
+            cursor: pointer;
+            color: var(--text-color);
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 500;
+        }
+        
+        .theme-toggle:hover {
+            border-color: var(--primary-color);
+            background: var(--primary-color)10;
+            transform: scale(1.05);
+        }
+        
+        /* ===== FOOTER - IMPROVED VISIBILITY ===== */
+        .footer {
+            background: var(--bg-color);
+            border-top: 1px solid var(--border-color);
+            padding: 3rem 2rem 2rem;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .footer-logo {
+            margin-bottom: 2rem;
+        }
+        
+        .footer-logo img {
+            height: 50px;
+            width: auto;
+        }
+        
+        .footer-socials {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .footer-social {
+            color: var(--text-secondary);
+            font-size: 1.5rem;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            text-decoration: none;
+            width: 45px;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+        }
+        
+        .footer-social:hover {
+            color: white;
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            transform: translateY(-4px) scale(1.1);
+            border-color: transparent;
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+        }
+        
+        .footer-text {
+            color: var(--text-color);
+            margin-bottom: 1rem;
+            font-weight: 500;
+            font-size: 1rem;
+        }
+        
+        .footer-contact {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+        
+        /* ===== BACK TO TOP BUTTON ===== */
+        .back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            color: white;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            font-size: 1.2rem;
+            cursor: pointer;
+            opacity: 0;
+            transform: translateY(100px);
+            transition: all 0.3s ease;
+            z-index: 999;
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .back-to-top.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .back-to-top:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(37, 99, 235, 0.4);
+        }
+        
+        /* ===== RESPONSIVE DESIGN ===== */
+        @media (max-width: 1200px) {
+            .nav-container {
+                padding: 1rem 1.5rem;
+            }
+            
+            .nav-left {
+                max-width: 42%;
+                padding-right: 1.5rem;
+            }
+            
+            .nav-right {
+                max-width: 42%;
+                padding-left: 1.5rem;
+            }
+            
+            .nav-center {
+                padding: 0 2rem;
+            }
+            
+            .nav-links {
+                gap: 0.4rem;
+            }
+            
+            .nav-links a {
+                padding: 0.5rem 1rem;
+                font-size: 0.9rem;
+            }
+        }
+        
+        @media (max-width: 1024px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .mobile-menu-toggle {
+                display: block;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-container {
+                padding: 1rem;
+            }
+            
+            .logo img {
+                height: 45px;
+            }
+            
+            .theme-toggle span {
+                display: none;
+            }
+            
+            .back-to-top {
+                bottom: 1.5rem;
+                right: 1.5rem;
+                width: 45px;
+                height: 45px;
+                font-size: 1rem;
+            }
+        }
+        
+        /* ===== SCROLL REVEAL ANIMATION ===== */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* ===== MAIN CONTENT PADDING FOR FIXED HEADER ===== */
+        main {
+            padding-top: 90px !important; /* Account for fixed header */
+        }
+        
+        /* ===== OVERRIDE OLD NAVBAR STYLES FROM sen-up.css ===== */
+        /* Hide any old navbar elements */
+        .top-nav,
+        nav.top-nav,
+        #topNav,
+        .hamburger,
+        .nav-menu {
+            display: none !important;
+            visibility: hidden !important;
+        }
+        
+        /* Ensure new navbar is visible and styled correctly */
+        body > header.header,
+        body header.header,
+        .header,
+        header.header {
+            display: block !important;
+            visibility: visible !important;
+            position: fixed !important;
+            top: 0 !important;
+            left: 0 !important;
+            right: 0 !important;
+            width: 100% !important;
+            z-index: 1000 !important;
+            background: rgba(255, 255, 255, 0.95) !important;
+            backdrop-filter: blur(50px) !important;
+            border-bottom: 1px solid var(--border-color) !important;
+        }
+        
+        /* Override any conflicting styles from sen-up.css */
+        body {
+            font-family: var(--font-body) !important;
+            padding-top: 0 !important;
+        }
+        
+        /* Ensure nav-container uses new layout */
+        .nav-container,
+        header .nav-container,
+        .header .nav-container {
+            display: flex !important;
+            align-items: center !important;
+            justify-content: space-between !important;
+            position: relative !important;
+            max-width: 1400px !important;
+            margin: 0 auto !important;
+            padding: 1rem 2rem !important;
+        }
+        
+        /* Ensure nav-links are visible */
+        .nav-links,
+        .nav-links li,
+        .nav-links a {
+            display: flex !important;
+            visibility: visible !important;
+        }
+        
+        /* Ensure logo is visible */
+        .logo,
+        .logo img {
+            display: block !important;
+            visibility: visible !important;
+        }
+        
+        /* Ensure theme toggle is visible */
+        .theme-toggle {
+            display: flex !important;
+            visibility: visible !important;
+        }
+        
+        /* TEST: This should make the navbar background bright red if CSS is loading - REMOVE AFTER TESTING */
+        /* Uncomment the line below temporarily to test if CSS is loading:
+        .header { background: red !important; }
+        */
+        
+        /* ===== EXISTING SEV-UP STYLES ===== */
+        /* Keep all existing styles from the original sev-up.html file */
+    </style>
+</head>
+<body>
+    <!-- ===== NAVIGATION HEADER ===== -->
+    <header class="header">
+        <nav class="nav-container">
+            <div class="nav-left">
+                <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle mobile menu">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <ul class="nav-links">
+                    <li><a href="../index.html#home">Home</a></li>
+                    <li><a href="../index.html#about">About</a></li>
+                    <li><a href="../index.html#core-values">Values</a></li>
+                    <li><a href="../index.html#services">Services</a></li>
+                    <li><a href="../projects.html">Projects</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="nav-center">
+                <a href="../index.html" class="logo" aria-label="SevenLink Home">
+                    <img src="../img/logo.Seven7.png" alt="SevenLink Logo">
+                </a>
+            </div>
+            <div class="nav-right">
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+                    <i class="fas fa-moon"></i>
+                    <span>Dark</span>
+                </button>
+            </div>
+        </nav>
+        <!-- Mobile Navigation Menu -->
+        <div class="mobile-nav" id="mobileNav">
+            <ul>
+                <li><a href="../index.html#home">Home</a></li>
+                <li><a href="../index.html#about">About</a></li>
+                <li><a href="../index.html#core-values">Values</a></li>
+                <li><a href="../index.html#services">Services</a></li>
+                <li><a href="../projects.html">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </header>
+    
+    <main>
+        <!-- Enhanced Deadline Alert with Live Countdown -->
+        <div class="deadline-alert enhanced-alert">
+            <div class="alert-content">
+                <i class="fas fa-clock"></i>
+                <span id="liveTimer">⏰ RUSH SERVICE ENDS IN: <span id="countdown">23:45:30</span></span>
+                <span class="alert-action">+20% for same-day!</span>
+            </div>
+        </div>
+        
+        <!-- Improved Hero Section with Social Proof -->
+        <header class="hero-enhanced">
+            <div class="container">
+                <div class="hero-content">
+                    <div class="logo" id="animatedLogo">SEVEN LINK /TECH & DOCUMENT SERVICES</div>
+                    <p class="tagline">Ghana's #1 Academic Services for All Tertiary Students</p>
+                    
+                    <!-- Social Proof Numbers -->
+                    <div class="social-proof">
+                        <div class="proof-item">
+                            <span class="proof-number" data-target="500">0</span>
+                            <span class="proof-label">Students Helped</span>
+                        </div>
+                        <div class="proof-item">
+                            <span class="proof-number" data-target="24">0</span>
+                            <span class="proof-label">Hour Service</span>
+                        </div>
+                        <div class="proof-item">
+                            <span class="proof-number" data-target="98">0</span>
+                            <span class="proof-label">Satisfaction Rate</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Quick Action Buttons -->
+                    <div class="hero-actions">
+                        <a href="#contact" class="btn document-btn hero-btn">Get Quote Now</a>
+                        <a href="https://wa.me/233549437374" class="btn coding-btn hero-btn">Chat on WhatsApp</a>
+                    </div>
+                </div>
+            </div>
+        </header>
+        
+        <div class="container">
+            <!-- How It Works Section -->
+            <section class="how-it-works">
+                <h2 style="text-align: center; margin-bottom: 0.5rem; font-size: clamp(1.5rem, 5vw, 1.8rem);">How It Works</h2>
+                <p style="text-align: center; opacity: 0.7; margin-bottom: 1rem;">Simple 3-step process to get your academic work done</p>
+                
+                <div class="steps-grid">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <h4>Order</h4>
+                        <p>Contact us via WhatsApp or fill our form with your requirements</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <h4>Pay</h4>
+                        <p>Make 50% deposit via Mobile Money. We start work immediately</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <h4>Receive</h4>
+                        <p>Get your completed work within 24-48 hours. Pay balance on satisfaction</p>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Ambassador Program -->
+            <div class="ambassador-cta">
+                <h3><i class="fas fa-star"></i> Earn ₵500+/month as a Seven Ambassador!</h3>
+                <p>Refer students from your campus and earn 15% commission on their orders</p>
+                <a href="https://wa.me/233549437374?text=I%20want%20to%20be%20a%20Seven%20Ambassador" class="btn" style="background: white; color: var(--ambassador); margin-top: 1rem;">Apply Now</a>
+            </div>
+            
+            <!-- Student Packages -->
+            <section class="packages" id="packages">
+                <h3><i class="fas fa-gift"></i> Student Packages (Save 20-30%)</h3>
+                <div class="packages-flex">
+                    <div class="package">
+                        <h4>Thesis Complete Pack</h4>
+                        <p>Word Formatting + Printing + Binding = <strong>Save 20%</strong></p>
+                        <a href="https://wa.me/233549437374?text=I%20want%20the%20Thesis%20Complete%20Pack" class="btn document-btn" style="margin-top: 0.5rem; padding: 0.5rem 1.5rem;">Order Package</a>
+                    </div>
+                    <div class="package">
+                        <h4>Coding Starter Bundle</h4>
+                        <p>Python Script + Documentation + Debugging = <strong>Save 20%</strong></p>
+                        <a href="https://wa.me/233549437374?text=I%20want%20the%20Coding%20Starter%20Bundle" class="btn coding-btn" style="margin-top: 0.5rem; padding: 0.5rem 1.5rem;">Order Package</a>
+                    </div>
+                    <div class="package">
+                        <h4>Presentation Pro Pack</h4>
+                        <p>PowerPoint + Speaker Notes + Print Slides =  <strong>Save 20%</strong></p>
+                        <a href="https://wa.me/233549437374?text=I%20want%20the%20Presentation%20Pro%20Pack" class="btn document-btn" style="margin-top: 0.5rem; padding: 0.5rem 1.5rem;">Order Package</a>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Enhanced Pricing Calculator -->
+            <section class="calculator enhanced-calculator" id="calculator">
+                <h3><i class="fas fa-calculator"></i> Instant Price Calculator</h3>
+                <p>Get your quote in seconds:</p>
+                
+                <div class="calculator-grid">
+                    <div class="calc-inputs">
+                        <select id="serviceType" onchange="calculatePrice()">
+                            <option value="">Select Service Type</option>
+                            <option value="word">Word Formatting (₵2/page)</option>
+                            <option value="excel">Excel Work (₵5/page)</option>
+                            <option value="powerpoint">PowerPoint (₵4/slide)</option>
+                            <option value="python">Python Coding (₵50-500)</option>
+                            <option value="web">Web Development (₵50-500)</option>
+                        </select>
+                        
+                        <input type="number" id="quantity" placeholder="Enter pages/slides/hours" min="1" onchange="calculatePrice()">
+                        
+                        <select id="urgency" onchange="calculatePrice()">
+                            <option value="normal">Normal (24-48 hours)</option>
+                            <option value="rush">Rush (6-12 hours) +20%</option>
+                            <option value="emergency">Emergency (3-6 hours) +50%</option>
+                        </select>
+                    </div>
+                    
+                    <div class="calc-result">
+                        <div id="calculator-result">Select service to see pricing</div>
+                        <div id="delivery-time"></div>
+                        <button onclick="proceedToOrder()" id="order-btn" class="btn document-btn" style="display: none;">
+                            Order This Service
+                        </button>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Document Services -->
+            <div class="category-header" id="services">
+                <h2><i class="fas fa-file-alt" style="color: var(--accent); margin-right: 10px;"></i> Document Services</h2>
+                <span class="badge category-badge">For all students</span>
+            </div>
+            
+            <section class="services-grid">
+                <!-- MS Word Service - Enhanced -->
+                <div class="service-card document-service enhanced-card">
+                    <div class="service-content">
+                        <div class="service-header">
+                            <div class="service-icon document-icon"><i class="fas fa-file-word"></i></div>
+                            <div class="availability-indicator">
+                                <span class="status-dot available"></span>
+                                <span class="status-text">Available Now</span>
+                            </div>
+                        </div>
+                        <h3>MS Word Magic</h3>
+                        <p>Thesis formatting, report writing with perfect TOC, headers, and citations. Plagiarism free!</p>
+                        
+                        <div class="service-features">
+                            <span class="feature">✓ Same-day delivery</span>
+                            <span class="feature">✓ Unlimited revisions</span>
+                            <span class="feature">✓ APA/MLA formatting</span>
+                        </div>
+                        
+                        <div class="price-section">
+                            <div class="price document-price">₵2 per page</div>
+                            <div class="price-note">Starting from 10 pages</div>
+                        </div>
+                        
+                        <div class="service-actions">
+                            <a href="https://wa.me/233549437374?text=I%20need%20MS%20Word%20help" class="btn document-btn">Order Now</a>
+                            <button onclick="addToCalculator('word')" class="btn-secondary">Add to Calculator</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Excel Service - Enhanced -->
+                <div class="service-card document-service enhanced-card">
+                    <div class="service-content">
+                        <div class="service-header">
+                            <div class="service-icon document-icon"><i class="fas fa-file-excel"></i></div>
+                            <div class="availability-indicator">
+                                <span class="status-dot available"></span>
+                                <span class="status-text">Available Now</span>
+                            </div>
+                        </div>
+                        <h3>Excel Wizardry</h3>
+                        <p>Data analysis, formulas, charts for assignments and research projects with professional formatting.</p>
+                        
+                        <div class="service-features">
+                            <span class="feature">✓ Advanced formulas</span>
+                            <span class="feature">✓ Data visualization</span>
+                            <span class="feature">✓ Pivot tables & macros</span>
+                        </div>
+                        
+                        <div class="price-section">
+                            <div class="price document-price">₵5 per page</div>
+                            <div class="price-note">Complex analysis starts at ₵50</div>
+                        </div>
+                        
+                        <div class="service-actions">
+                            <a href="https://wa.me/233549437374?text=I%20need%20Excel%20help" class="btn document-btn">Order Now</a>
+                            <button onclick="addToCalculator('excel')" class="btn-secondary">Add to Calculator</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- PowerPoint Service - Enhanced -->
+                <div class="service-card document-service enhanced-card">
+                    <div class="service-content">
+                        <div class="service-header">
+                            <div class="service-icon document-icon"><i class="fas fa-file-powerpoint"></i></div>
+                            <div class="availability-indicator">
+                                <span class="status-dot available"></span>
+                                <span class="status-text">Available Now</span>
+                            </div>
+                        </div>
+                        <h3>PowerPoint Pro</h3>
+                        <p>Stunning presentations with animations, professional templates, and engaging visual content.</p>
+                        
+                        <div class="service-features">
+                            <span class="feature">✓ Custom animations</span>
+                            <span class="feature">✓ Professional templates</span>
+                            <span class="feature">✓ Speaker notes included</span>
+                        </div>
+                        
+                        <div class="price-section">
+                            <div class="price document-price">₵4 per slide</div>
+                            <div class="price-note">Minimum 10 slides</div>
+                        </div>
+                        
+                        <div class="service-actions">
+                            <a href="https://wa.me/233549437374?text=I%20need%20PowerPoint%20help" class="btn document-btn">Order Now</a>
+                            <button onclick="addToCalculator('powerpoint')" class="btn-secondary">Add to Calculator</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Coding Services -->
+            <div class="category-header">
+                <h2><i class="fas fa-code" style="color: var(--tech); margin-right: 10px;"></i> Coding Services</h2>
+                <span class="badge category-badge">For tech students</span>
+            </div>
+            
+            <section class="services-grid">
+                <!-- Python Service - Enhanced -->
+                <div class="service-card coding-service enhanced-card">
+                    <div class="service-content">
+                        <div class="service-header">
+                            <div class="service-icon coding-icon"><i class="fab fa-python"></i></div>
+                            <div class="availability-indicator">
+                                <span class="status-dot available"></span>
+                                <span class="status-text">Available Now</span>
+                            </div>
+                        </div>
+                        <h3>Python Programming</h3>
+                        <p>Custom scripts for automation, data analysis, machine learning, and academic projects with documentation.</p>
+                        
+                        <div class="service-features">
+                            <span class="feature">✓ Full documentation</span>
+                            <span class="feature">✓ Code commenting</span>
+                            <span class="feature">✓ Testing & debugging</span>
+                        </div>
+                        
+                        <div class="price-section">
+                            <div class="price coding-price">₵50 - ₵500</div>
+                            <div class="price-note">Based on complexity</div>
+                        </div>
+                        
+                        <div class="service-actions">
+                            <a href="https://wa.me/233549437374?text=I%20need%20Python%20help" class="btn coding-btn">Order Now</a>
+                            <button onclick="addToCalculator('python')" class="btn-secondary">Add to Calculator</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Web Development Service - Enhanced -->
+                <div class="service-card coding-service enhanced-card">
+                    <div class="service-content">
+                        <div class="service-header">
+                            <div class="service-icon coding-icon"><i class="fab fa-html5"></i></div>
+                            <div class="availability-indicator">
+                                <span class="status-dot available"></span>
+                                <span class="status-text">Available Now</span>
+                            </div>
+                        </div>
+                        <h3>Web Development</h3>
+                        <p>Responsive websites using HTML, CSS, JavaScript for projects, portfolios, and small businesses.</p>
+                        
+                        <div class="service-features">
+                            <span class="feature">✓ Responsive design</span>
+                            <span class="feature">✓ Modern frameworks</span>
+                            <span class="feature">✓ SEO optimized</span>
+                        </div>
+                        
+                        <div class="price-section">
+                            <div class="price coding-price">₵100 - ₵500</div>
+                            <div class="price-note">Simple sites from ₵50</div>
+                        </div>
+                        
+                        <div class="service-actions">
+                            <a href="https://wa.me/233549437374?text=I%20need%20Web%20Development%20help" class="btn coding-btn">Order Now</a>
+                            <button onclick="addToCalculator('web')" class="btn-secondary">Add to Calculator</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Database Service - Enhanced -->
+                <div class="service-card coding-service enhanced-card">
+                    <div class="service-content">
+                        <div class="service-header">
+                            <div class="service-icon coding-icon"><i class="fas fa-database"></i></div>
+                            <div class="availability-indicator">
+                                <span class="status-dot busy"></span>
+                                <span class="status-text">High Demand</span>
+                            </div>
+                        </div>
+                        <h3>Database Projects</h3>
+                        <p>SQL database design, implementation, and optimization for school projects and research work.</p>
+                        
+                        <div class="service-features">
+                            <span class="feature">✓ ERD diagrams</span>
+                            <span class="feature">✓ Query optimization</span>
+                            <span class="feature">✓ Data migration</span>
+                        </div>
+                        
+                        <div class="price-section">
+                            <div class="price coding-price">₵80 - ₵400</div>
+                            <div class="price-note">Simple DB from ₵50</div>
+                        </div>
+                        
+                        <div class="service-actions">
+                            <a href="https://wa.me/233549437374?text=I%20need%20Database%20help" class="btn coding-btn">Order Now</a>
+                            <button onclick="addToCalculator('database')" class="btn-secondary">Add to Calculator</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Campus Services -->
+            <div class="category-header">
+                <h2><i class="fas fa-university" style="color: var(--campus); margin-right: 10px;"></i> UENR Campus Services</h2>
+                <span class="badge category-badge">Exclusive to UENR students</span>
+            </div>
+            
+            <section class="services-grid">
+                <!-- Thesis Binding - Enhanced -->
+                <div class="service-card campus-service enhanced-card">
+                    <div class="service-content">
+                        <div class="service-header">
+                            <div class="service-icon campus-icon"><i class="fas fa-book"></i></div>
+                            <div class="availability-indicator">
+                                <span class="status-dot available"></span>
+                                <span class="status-text">Same Day Available</span>
+                            </div>
+                        </div>
+                        <h3>Thesis Binding
+                            <span class="badge campus-service-badge">UENR Only</span>
+                        </h3>
+                        <p>Professional hardcover binding for projects and theses with gold embossing and protective covering.</p>
+                        
+                        <div class="service-features">
+                            <span class="feature">✓ Gold embossing</span>
+                            <span class="feature">✓ Protective covering</span>
+                            <span class="feature">✓ Same-day service</span>
+                        </div>
+                        
+                        <div class="price-section">
+                            <div class="price campus-price">₵15 - ₵50</div>
+                            <div class="price-note">Depends on pages & style</div>
+                        </div>
+                        
+                        <div class="service-actions">
+                            <a href="https://wa.me/233549437374?text=I%20need%20Thesis%20Binding%20at%20UENR" class="btn campus-btn">Order Now</a>
+                            <button onclick="addToCalculator('binding')" class="btn-secondary">Get Quote</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Campus Delivery - Enhanced -->
+                <div class="service-card campus-service enhanced-card">
+                    <div class="service-content">
+                        <div class="service-header">
+                            <div class="service-icon campus-icon"><i class="fas fa-motorcycle"></i></div>
+                            <div class="availability-indicator">
+                                <span class="status-dot available"></span>
+                                <span class="status-text">Ready to Deliver</span>
+                            </div>
+                        </div>
+                        <h3>Campus Delivery
+                            <span class="badge campus-service-badge">UENR Only</span>
+                        </h3>
+                        <p>Fast document pickup and delivery service across UENR campus with real-time tracking.</p>
+                        
+                        <div class="service-features">
+                            <span class="feature">✓ 30-minute delivery</span>
+                            <span class="feature">✓ Real-time tracking</span>
+                            <span class="feature">✓ Secure handling</span>
+                        </div>
+                        
+                        <div class="price-section">
+                            <div class="price campus-price">₵5 - ₵15</div>
+                            <div class="price-note">Based on distance</div>
+                        </div>
+                        
+                        <div class="service-actions">
+                            <a href="https://wa.me/233549437374?text=I%20need%20Campus%20Delivery%20at%20UENR" class="btn campus-btn">Order Now</a>
+                            <button onclick="addToCalculator('delivery')" class="btn-secondary">Get Quote</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Urgent Printing - Enhanced -->
+                <div class="service-card campus-service enhanced-card">
+                    <div class="service-content">
+                        <div class="service-header">
+                            <div class="service-icon campus-icon"><i class="fas fa-print"></i></div>
+                            <div class="availability-indicator">
+                                <span class="status-dot urgent"></span>
+                                <span class="status-text">Rush Orders</span>
+                            </div>
+                        </div>
+                        <h3>Urgent Printing
+                            <span class="badge campus-service-badge">UENR Only</span>
+                        </h3>
+                        <p>High-quality color and B&W printing with 1-hour delivery promise and professional finishing.</p>
+                        
+                        <div class="service-features">
+                            <span class="feature">✓ 1-hour delivery</span>
+                            <span class="feature">✓ Color & B&W options</span>
+                            <span class="feature">✓ Professional quality</span>
+                        </div>
+                        
+                        <div class="price-section">
+                            <div class="price campus-price">₵1 - ₵10/page</div>
+                            <div class="price-note">Color printing higher</div>
+                        </div>
+                        
+                        <div class="service-actions">
+                            <a href="https://wa.me/233549437374?text=I%20need%20Urgent%20Printing%20at%20UENR" class="btn campus-btn">Order Now</a>
+                            <button onclick="addToCalculator('printing')" class="btn-secondary">Get Quote</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Enhanced Contact Form -->
+            <section class="contact-form enhanced-form" id="contact">
+    <h2>Get Your Custom Quote</h2>
+    <p>Fill this form or WhatsApp us for instant response</p>
+
+    <!-- Response placeholder -->
+    <div id="formResponse" style="display:none;" class="form-response"></div>
+
+    <div class="form-layout">
+        <form id="contactForm" class="main-form" action="sendMail.php" method="POST" enctype="multipart/form-data">
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="name">Full Name *</label>
+                    <input type="text" id="name" name="name" required onchange="updateProgress()">
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone Number *</label>
+                    <input type="tel" id="phone" name="phone" required onchange="updateProgress()">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email Address *</label>
+                <input type="email" id="email" name="email" required onchange="updateProgress()">
+            </div>
+
+            <div class="form-group">
+                <label for="institution">Institution</label>
+                <select id="institution" name="institution" onchange="updateProgress()">
+                    <option value="">Select your institution</option>
+                    <option value="UENR">UENR</option>
+                    <option value="KNUST">KNUST</option>
+                    <option value="UCC">UCC</option>
+                    <option value="UG">University of Ghana</option>
+                    <option value="UPSA">UPSA</option>
+                    <option value="Other">Other</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="serviceNeeded">Service Needed *</label>
+                <select id="serviceNeeded" name="serviceNeeded" required onchange="updateProgress()">
+                    <option value="">Select service</option>
+                    <option value="Word Formatting">Word Formatting</option>
+                    <option value="Excel Work">Excel Work</option>
+                    <option value="PowerPoint">PowerPoint</option>
+                    <option value="Python Coding">Python Coding</option>
+                    <option value="Web Development">Web Development</option>
+                    <option value="Thesis Binding">Thesis Binding (UENR)</option>
+                    <option value="Campus Delivery">Campus Delivery (UENR)</option>
+                    <option value="Printing">Urgent Printing (UENR)</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="deadline">Preferred Deadline</label>
+                <input type="date" id="deadline" name="deadline" onchange="updateProgress()">
+            </div>
+
+            <div class="form-group">
+                <label for="details">Project Details *</label>
+                <textarea id="details" name="details" placeholder="Describe your requirements in detail..." required onchange="updateProgress()"></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="files">Upload Your Document (Optional)</label>
+                <input type="file" id="files" name="files[]" accept=".doc,.docx,.pdf,.ppt,.pptx,.xls,.xlsx" multiple>
+                <small>Supported: Word, PDF, PowerPoint, Excel files (Max 10MB each)</small>
+            </div>
+
+            <button type="submit" class="btn document-btn enhanced-submit" id="submitBtn">
+                <span class="btn-text">Send Quote Request</span>
+                <span class="btn-loading" style="display: none;">
+                    <i class="fas fa-spinner fa-spin"></i> Sending...
+                </span>
+            </button>
+        </form>
+    </div>
+</section>
+
+
+                    
+                    <div class="form-sidebar">
+                        <div class="quick-contact">
+                            <h4>Need Immediate Help?</h4>
+                            <a href="https://wa.me/233549437374" class="quick-btn whatsapp-btn">
+                                <i class="fab fa-whatsapp"></i> WhatsApp Now
+                            </a>
+                            <a href="tel:+233549437374" class="quick-btn call-btn">
+                                <i class="fas fa-phone"></i> Call Us
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- FAQ Section -->
+            <section class="faq-section">
+                <h2 style="text-align: center; margin-bottom: 1.5rem; font-size: clamp(1.5rem, 5vw, 1.8rem);">Frequently Asked Questions</h2>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        How quickly can you complete my document formatting?
+                    </div>
+                    <div class="faq-answer">
+                        <p>Most Word documents (under 50 pages) are completed within 24 hours. For urgent requests (3-6 hour turnaround), we charge a 20% premium fee.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Can I get my bound thesis delivered same day at UENR?
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes! Our UENR binding service offers same-day completion if ordered before 2pm. Delivery to your department adds just ₵5-₵10 depending on location.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Do you help with coding assignments last-minute?
+                    </div>
+                    <div class="faq-answer">
+                        <p>We prioritize urgent coding help, but recommend contacting us at least 48 hours before deadline. Last-minute requests (under 12 hours) incur a 50% rush fee.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        How do I pay for services?
+                    </div>
+                    <div class="faq-answer">
+                        <p>We accept Mobile Money (all networks), cash (UENR only), and bank transfers. Payment is 50% upfront for new clients, balance upon completion.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Can you do group discounts for classmates?
+                    </div>
+                    <div class="faq-answer">
+                        <p>Absolutely! Groups of 3+ students get 15% off document services, and 20% off coding projects when ordered together.</p>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Testimonials -->
+            <section class="testimonials" style="background: white; padding: 2rem 1rem; margin: 2.5rem 0; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.05);">
+                <h2 style="text-align: center; margin-bottom: 1.5rem; font-size: clamp(1.5rem, 5vw, 1.8rem);">What Students Say</h2>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr)); gap: 1.2rem;">
+                    <div style="background: var(--light); padding: 1.2rem; border-radius: 8px;">
+                        <p>"Seven saved my nursing project with last-minute PowerPoint help when I was overwhelmed with clinicals!"</p>
+                        <p style="font-weight: 600; margin-top: 1rem;">- Nursing Training College</p>
+                    </div>
+                    <div style="background: var(--light); padding: 1.2rem; border-radius: 8px;">
+                        <p>"Bound my thesis perfectly at UENR when the campus shop was closed. Lifesaver!"</p>
+                        <p style="font-weight: 600; margin-top: 1rem;">- UENR Engineering</p>
+                    </div>
+                    <div style="background: var(--light); padding: 1.2rem; border-radius: 8px;">
+                        <p>"Debugged my python code in 30 minutes after I struggled for days. Worth every cedi!"</p>
+                        <p style="font-weight: 600; margin-top: 1rem;">- UCC Computer Science</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+
+        <!-- Newsletter Section -->
+            <section class="newsletter-section">
+                <div class="newsletter-content">
+                    <div class="newsletter-text">
+                        <h2><i class="fas fa-envelope"></i> Stay Updated with Seven</h2>
+                        <p>Get exclusive discounts, study tips, and be first to know about new services for students across Ghana!</p>
+                        
+                        <div class="newsletter-benefits">
+                            <div class="benefit-item">
+                                <i class="fas fa-percent"></i>
+                                <span>Exclusive discounts up to 25%</span>
+                            </div>
+                            <div class="benefit-item">
+                                <i class="fas fa-graduation-cap"></i>
+                                <span>Free study resources & templates</span>
+                            </div>
+                            <div class="benefit-item">
+                                <i class="fas fa-bell"></i>
+                                <span>Early access to new services</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="newsletter-form-container">
+                        <form class="newsletter-form" id="newsletterForm">
+                            <div class="form-group-newsletter">
+                                <input type="text" id="newsletter-name" placeholder="Your Name" required>
+                                <input type="email" id="newsletter-email" placeholder="Your Email" required>
+                                <select id="newsletter-institution" required>
+                                    <option value="">Select Institution</option>
+                                    <option value="UENR">UENR</option>
+                                    <option value="KNUST">KNUST</option>
+                                    <option value="UCC">UCC</option>
+                                    <option value="UG">University of Ghana</option>
+                                    <option value="UPSA">UPSA</option>
+                                    <option value="AAMUSTED">AAMUSTED</option>
+                                    <option value="UEW">UEW</option>
+                                    <option value="Other">Other</option>
+                                </select>
+                            </div>
+                            <button type="submit" class="newsletter-btn">
+                                <i class="fas fa-paper-plane"></i> Subscribe Now
+                            </button>
+                        </form>
+                        
+                        <p class="newsletter-disclaimer">
+                            <i class="fas fa-shield-alt"></i> We respect your privacy. No spam, unsubscribe anytime.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            
+    </main>
+    
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-logo reveal">
+                <img src="../img/logo.Seven7.png" alt="SevenLink Logo">
+            </div>
+            <div class="footer-socials reveal">
+                <a href="#" class="footer-social" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                <a href="#" class="footer-social" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+                <a href="#" class="footer-social" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="footer-social" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            </div>
+            <div class="footer-text reveal">
+                <p>&copy; 2025 SevenLink. All rights reserved.</p>
+            </div>
+            <div class="footer-contact reveal">
+                <p>Contact us: sevennlink@gmail.com | (+233) 54-943-7374</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ===== BACK TO TOP BUTTON ===== -->
+    <button class="back-to-top" id="backToTop" title="Back to top" aria-label="Back to top">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <!-- Live Chat Button -->
+    <a href="https://wa.me/233549437374" class="live-chat-btn">
+        <i class="fab fa-whatsapp" style="font-size: 1.8rem;"></i>
+    </a>
+
+    <script src="script.js"></script>
+    <script>
+        // Mobile menu toggle
+        const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+        const mobileNav = document.getElementById('mobileNav');
+        
+        if (mobileMenuToggle && mobileNav) {
+            mobileMenuToggle.addEventListener('click', () => {
+                mobileNav.classList.toggle('active');
+            });
+        }
+        
+        // Theme toggle
+        const themeToggle = document.getElementById('themeToggle');
+        const html = document.documentElement;
+        
+        // Check for saved theme preference or default to light mode
+        const currentTheme = localStorage.getItem('theme') || 'light';
+        html.setAttribute('data-theme', currentTheme);
+        
+        if (themeToggle) {
+            // Update button text based on current theme
+            if (currentTheme === 'dark') {
+                themeToggle.innerHTML = '<i class="fas fa-sun"></i><span>Light</span>';
+            }
+            
+            themeToggle.addEventListener('click', () => {
+                const currentTheme = html.getAttribute('data-theme');
+                const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+                
+                html.setAttribute('data-theme', newTheme);
+                localStorage.setItem('theme', newTheme);
+                
+                // Update button text
+                if (newTheme === 'dark') {
+                    themeToggle.innerHTML = '<i class="fas fa-sun"></i><span>Light</span>';
+                } else {
+                    themeToggle.innerHTML = '<i class="fas fa-moon"></i><span>Dark</span>';
+                }
+            });
+        }
+        
+        // Back to top button
+        const backToTop = document.getElementById('backToTop');
+        
+        if (backToTop) {
+            window.addEventListener('scroll', () => {
+                if (window.pageYOffset > 300) {
+                    backToTop.classList.add('visible');
+                } else {
+                    backToTop.classList.remove('visible');
+                }
+            });
+            
+            backToTop.addEventListener('click', () => {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+        }
+        
+        // Scroll reveal animation
+        const reveals = document.querySelectorAll('.reveal');
+        
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        });
+        
+        reveals.forEach(reveal => {
+            revealObserver.observe(reveal);
+        });
+    </script>
+</body>
+</html>
