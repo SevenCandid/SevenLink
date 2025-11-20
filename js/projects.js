@@ -153,37 +153,42 @@ const projects = [
     },
     {
         id: 4,
-        slug: "smart-home-dashboard",
+        slug: "smart-home-automation-dashboard",
         title: "Smart Home Automation Dashboard",
-        shortDescription: "An intelligent dashboard application for controlling and monitoring smart home devices including lights, thermostats, security systems, and appliances from a single interface.",
-        longDescription: "The Smart Home Automation Dashboard is a comprehensive control center that brings together all smart home devices into one intuitive interface. This powerful application allows homeowners to monitor and control their entire smart home ecosystem, including lighting systems, climate control, security cameras, door locks, and various IoT-enabled appliances. The dashboard provides real-time status updates, energy consumption analytics, and automated scheduling capabilities. With a user-friendly design, users can create custom automation routines, set up geofencing for location-based triggers, and receive alerts for security events or maintenance needs. The responsive design ensures accessibility from any device, making home management convenient whether you're at home or away.",
+        shortDescription: "A modern, responsive web dashboard for controlling IoT devices with a Flask backend, featuring real-time temperature monitoring, light effects, fan speed control, and RESTful API integration.",
+        longDescription: "The Smart Home Automation Dashboard is a production-ready web application built with Flask that provides an intuitive interface for managing smart home devices. The dashboard features a beautiful dark theme UI with glowing effects and smooth animations, making device control both functional and visually appealing. Users can control lights with multiple effect modes (vivid, natural, warm, cool, dim, bright), adjust fan speeds with visual feedback, and monitor temperature sensors with real-time automatic updates. The application includes a SQLite database for device state management and provides a comprehensive RESTful API ready for IoT integration. The responsive design ensures optimal experience across mobile, tablet, and desktop devices. The project is configured for easy deployment on Vercel with serverless function support, making it accessible and scalable for real-world smart home implementations.",
         features: [
-            "Unified control for all smart home devices",
-            "Real-time monitoring and status updates",
-            "Energy consumption analytics and reports",
-            "Custom automation routines and schedules",
-            "Geofencing for location-based automation",
-            "Security alerts and notifications",
-            "Voice control integration"
+            "Smart device control (lights, fans, temperature sensors)",
+            "Modern dark theme UI with glowing effects and smooth animations",
+            "Fully responsive design optimized for all devices",
+            "Real-time temperature monitoring with automatic updates",
+            "Multiple light effect modes (vivid, natural, warm, cool, dim, bright)",
+            "Adjustable fan speed control with visual feedback",
+            "RESTful API endpoints for IoT integration",
+            "SQLite database for device state management",
+            "Background thread for simulated temperature updates",
+            "Vercel deployment ready with serverless function support",
+            "CORS enabled for cross-origin IoT device communication",
+            "Toast notifications for user feedback"
         ],
         techStack: [
-            "React",
-            "Node.js",
-            "WebSocket",
-            "MQTT",
+            "Flask (Python)",
+            "SQLite",
+            "HTML5",
+            "CSS3",
+            "JavaScript (ES6+)",
+            "Bootstrap 5",
+            "Font Awesome",
+            "Bootstrap Icons",
             "RESTful API",
-            "Chart.js",
-            "Material-UI",
-            "Firebase"
+            "Vercel Serverless Functions"
         ],
         images: [
-            "img/projects/smart-home-dashboard-1.png",
-            "img/projects/smart-home-dashboard-2.png",
-            "img/projects/smart-home-dashboard-3.png"
+            "img/smart home_1.png"
         ],
         links: {
-            live: "#",
-            github: "#"
+            live: "https://smart-home-automation-dashboard-inky.vercel.app",
+            github: "https://github.com/SevenCandid/Smart-Home-Automation-Dashboard"
         },
         featured: true,
         comingSoon: false
